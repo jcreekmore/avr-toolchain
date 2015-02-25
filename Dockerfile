@@ -12,6 +12,13 @@ RUN apt-get --quiet --yes update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists
 
+# Install Python packages
+# Done as one big command to keep the image leaner
+RUN apt-get --quiet --yes update && \
+    apt-get --quiet --yes install python && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists
+
 # Install AVR development packages
 # Done as one big command to keep the image leaner
 RUN apt-get --quiet --yes update && \
@@ -19,5 +26,6 @@ RUN apt-get --quiet --yes update && \
     apt-get --quiet --yes install avrprog avrp avrdude gdb-avr && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists
+
 
 WORKDIR /tmp
